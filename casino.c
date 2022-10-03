@@ -339,7 +339,7 @@ void betting(int* money, int* bett) {
 			printf("보유 자산 이하의 금액을 입력해 주세요. (단위 : 만원) : ");
 			scanf("%d", &betting);
 		}
-		else if (betting =< 0) {
+		else if (betting <= 0) {
 			clear(50);
 			printf("자산 : %d만원\n", *money);
 			printf("0보다 큰 금액을 입력해 주세요. (단위 : 만원) : ");
