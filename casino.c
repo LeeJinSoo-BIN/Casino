@@ -332,7 +332,7 @@ void betting(int* money, int* bett) {
 	printf("베팅할 금액을 입력해 주세요. (단위 : 만원) : ");
 	scanf("%d", &betting);
 	while (1) {
-		if (betting > * money) {
+		if (betting > *money) {
 			clear(50);
 			printf("보유 자산을 초과합니다.\n");
 			printf("보유 자산 : %d만원\n", *money);
@@ -702,7 +702,7 @@ void bet_baccarat(int* money, int* bet, int* whom) {
 	printf("베팅 금액을 입력해주세요(단위 : 만원) : ");
 	scanf("%d", bet);
 	while (1) {
-		if (*bet > * money) {
+		if (*bet > *money) {
 			clear(50);
 			printf("베팅 대상 : ");
 			if (a == 1) {
@@ -1588,7 +1588,7 @@ int select_game() {
 	printf("     경마 : 4             게임 규칙 : 5       종료 : 6\n");
 	scanf("%d", &a);
 	while (1) {
-		if (a == 1 || a == 2 || a == 3 || a == 4) {
+		if (a == 1 || a == 2 || a == 3 || a == 4 || a == 6) {
 			break;
 		}
 		else if (a == 5) {
@@ -1659,6 +1659,9 @@ void start_game(int game, int* money) {
 		horse_run(money);
 	}
 	else if (game == 5) {
+		print_rule();
+	}
+	else if (game == 6) {
 		end_game(2);
 	}
 }
@@ -1851,8 +1854,8 @@ void print_main() {
 		if (kbhit()) {
 			getch();
 			break;
-		} 
-		
+		}
+
 		Sleep(1000);
 
 		color = rand() % 16;
