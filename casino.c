@@ -6,7 +6,7 @@
 #include <windows.h>
 #include <direct.h>
 
-//¼³Á¤
+//ì„¤ì •
 void start_game(int game, int* money);
 void end_game(int a);
 int done_play();
@@ -22,7 +22,7 @@ void clear(int a) {
 struct card {
 	int id;
 	int value;
-	char number[3];
+	char number[3];//ì¶œë ¥ìš©
 	char symbol[3];
 	char face[5];
 };
@@ -32,7 +32,7 @@ struct rank {
 };
 
 
-//Ä«µå
+//ì¹´ë“œ
 void card_make(struct card* x) {
 	int d = 0;
 	for (int k = 101; k <= 413; k++) {
@@ -75,16 +75,16 @@ void card_set(struct card* x) {
 		int a = x[k].id / 100;
 		switch (a) {
 		case (4):
-			strcpy(x[k].symbol, "¢»");
+			strcpy(x[k].symbol, "â™¤");
 			break;
 		case (3):
-			strcpy(x[k].symbol, "¡ß");
+			strcpy(x[k].symbol, "â—†");
 			break;
 		case(2):
-			strcpy(x[k].symbol, "¢¾");
+			strcpy(x[k].symbol, "â™¥");
 			break;
 		case(1):
-			strcpy(x[k].symbol, "¢¿");
+			strcpy(x[k].symbol, "â™§");
 			break;
 		}
 		strcpy(x[k].face, x[k].symbol);
@@ -164,75 +164,75 @@ void card_set_baccarat(struct card* x) {
 }
 void print_card(struct card* x, int who, int many) {
 	if (who == 0) {
-		printf("ÇÃ·¹ÀÌ¾îÀÇ Ä«µå :\n");
+		printf("í”Œë ˆì´ì–´ì˜ ì¹´ë“œ :\n");
 	}
 	if (who == 1) {
-		printf("µô·¯ÀÇ Ä«µå :\n");
+		printf("ë”œëŸ¬ì˜ ì¹´ë“œ :\n");
 	}
 	if (many == 0) {
-		printf("¦£¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¤¦£¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¤\n");
-		printf("¦¢");
+		printf("â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”\n");
+		printf("â”‚");
 		printf(" %s", x[who].face);
 		for (int t = 0; t < 7 - strlen(x[1].face); t++) {
 			printf(" ");
 		}
-		printf("¦¢");
-		printf("¦¢ ///////¦¢\n");
-		printf("¦¢        ¦¢¦¢ ///////¦¢\n");
-		printf("¦¢    o   ¦¢¦¢ ///////¦¢\n");
-		printf("¦¢        ¦¢¦¢ ///////¦¢\n");
-		printf("¦¢ ");
+		printf("â”‚");
+		printf("â”‚ ///////â”‚\n");
+		printf("â”‚        â”‚â”‚ ///////â”‚\n");
+		printf("â”‚    o   â”‚â”‚ ///////â”‚\n");
+		printf("â”‚        â”‚â”‚ ///////â”‚\n");
+		printf("â”‚ ");
 		for (int t = 0; t < 7 - strlen(x[1].face); t++) {
 			printf(" ");
 		}
-		printf("%s¦¢", x[1].face);
-		printf("¦¢ ///////¦¢\n");
-		printf("¦¦¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¥¦¦¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¥\n");
+		printf("%sâ”‚", x[1].face);
+		printf("â”‚ ///////â”‚\n");
+		printf("â””â”€â”€â”€â”€â”€â”€â”€â”€â”˜â””â”€â”€â”€â”€â”€â”€â”€â”€â”˜\n");
 
 
 	}
 
 	else {
 		for (int k = 0; k < many; k++) {
-			printf("¦£¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¤");
+			printf("â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”");
 		}
 		printf("\n");
 
 		for (int k = 0; k < many; k++) {
-			printf("¦¢");
+			printf("â”‚");
 			printf(" %s", x[2 * k + who].face);
 			for (int t = 0; t < 7 - strlen(x[2 * k + who].face); t++) {
 				printf(" ");
 			}
-			printf("¦¢");
+			printf("â”‚");
 		}
 		printf("\n");
 
 		for (int k = 0; k < many; k++) {
-			printf("¦¢        ¦¢");
+			printf("â”‚        â”‚");
 		}
 		printf("\n");
 		for (int k = 0; k < many; k++) {
-			printf("¦¢    o   ¦¢");
-		}
-		printf("\n");
-
-		for (int k = 0; k < many; k++) {
-			printf("¦¢        ¦¢");
+			printf("â”‚    o   â”‚");
 		}
 		printf("\n");
 
 		for (int k = 0; k < many; k++) {
-			printf("¦¢ ");
+			printf("â”‚        â”‚");
+		}
+		printf("\n");
+
+		for (int k = 0; k < many; k++) {
+			printf("â”‚ ");
 			for (int t = 0; t < 7 - strlen(x[2 * k + who].face); t++) {
 				printf(" ");
 			}
-			printf("%s¦¢", x[2 * k + who].face);
+			printf("%sâ”‚", x[2 * k + who].face);
 		}
 		printf("\n");
 
 		for (int k = 0; k < many; k++) {
-			printf("¦¦¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¥");
+			printf("â””â”€â”€â”€â”€â”€â”€â”€â”€â”˜");
 		}
 		printf("\n");
 
@@ -242,17 +242,17 @@ void print_card(struct card* x, int who, int many) {
 
 void print_card_back(int many) {
 	for (int k = 0; k < many; k++) {
-		printf("¦£¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¤");
+		printf("â”Œâ”€â”€â”€â”€â”€â”€â”€â”€â”");
 	}
 	printf("\n");
 	for (int k = 0; k < 5; k++) {
 		for (int k = 0; k < many; k++) {
-			printf("¦¢ ///////¦¢");
+			printf("â”‚ ///////â”‚");
 		}
 		printf("\n");
 	}
 	for (int k = 0; k < many; k++) {
-		printf("¦¦¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¥");
+		printf("â””â”€â”€â”€â”€â”€â”€â”€â”€â”˜");
 	}
 	printf("\n");
 }
@@ -279,7 +279,7 @@ void ranking() {
 	}
 
 	getchar();
-	printf("·©Å· µî·Ï\n");
+	printf("ë­í‚¹ ë“±ë¡\n");
 	printf("NAME : ");
 	gets(n);
 	ra = fopen("data\\ranking.txt", "r");
@@ -302,14 +302,14 @@ void ranking() {
 		}
 	}
 	clear(30);
-	printf("		          ÀÌ¸§                ÃÖ°í±İ¾×\n\n");
+	printf("		          ì´ë¦„                ìµœê³ ê¸ˆì•¡\n\n");
 	for (int k = 0; k <= man; k++) {
 		int l = strlen(r[k].name);
-		printf("		%dµî :   %s", k + 1, r[k].name);
+		printf("		%dë“± :   %s", k + 1, r[k].name);
 		for (int t = 0; t < 20 - l; t++) {
 			printf(" ");
 		}
-		printf("%d¸¸¿ø\n", r[k].score);
+		printf("%dë§Œì›\n", r[k].score);
 
 	}
 	clear(10);
@@ -328,21 +328,21 @@ void betting(int* money, int* bett) {
 
 	int betting;
 	clear(50);
-	printf("º¸À¯ ÀÚ»ê : %d¸¸¿ø\n", *money);
-	printf("º£ÆÃÇÒ ±İ¾×À» ÀÔ·ÂÇØ ÁÖ¼¼¿ä. (´ÜÀ§ : ¸¸¿ø) : ");
+	printf("ë³´ìœ  ìì‚° : %dë§Œì›\n", *money);
+	printf("ë² íŒ…í•  ê¸ˆì•¡ì„ ì…ë ¥í•´ ì£¼ì„¸ìš”. (ë‹¨ìœ„ : ë§Œì›) : ");
 	scanf("%d", &betting);
 	while (1) {
 		if (betting > *money) {
 			clear(50);
-			printf("º¸À¯ ÀÚ»êÀ» ÃÊ°úÇÕ´Ï´Ù.\n");
-			printf("º¸À¯ ÀÚ»ê : %d¸¸¿ø\n", *money);
-			printf("º¸À¯ ÀÚ»ê ÀÌÇÏÀÇ ±İ¾×À» ÀÔ·ÂÇØ ÁÖ¼¼¿ä. (´ÜÀ§ : ¸¸¿ø) : ");
+			printf("ë³´ìœ  ìì‚°ì„ ì´ˆê³¼í•©ë‹ˆë‹¤.\n");
+			printf("ë³´ìœ  ìì‚° : %dë§Œì›\n", *money);
+			printf("ë³´ìœ  ìì‚° ì´í•˜ì˜ ê¸ˆì•¡ì„ ì…ë ¥í•´ ì£¼ì„¸ìš”. (ë‹¨ìœ„ : ë§Œì›) : ");
 			scanf("%d", &betting);
 		}
-		else if (betting == 0) {
+		else if (betting =< 0) {
 			clear(50);
-			printf("ÀÚ»ê : %d¸¸¿ø\n", *money);
-			printf("0º¸´Ù Å« ±İ¾×À» ÀÔ·ÂÇØ ÁÖ¼¼¿ä. (´ÜÀ§ : ¸¸¿ø) : ");
+			printf("ìì‚° : %dë§Œì›\n", *money);
+			printf("0ë³´ë‹¤ í° ê¸ˆì•¡ì„ ì…ë ¥í•´ ì£¼ì„¸ìš”. (ë‹¨ìœ„ : ë§Œì›) : ");
 			scanf("%d", &betting);
 		}
 		else {
@@ -353,7 +353,7 @@ void betting(int* money, int* bett) {
 	*money = *money - betting;
 }
 
-//ºí·¢Àè
+//ë¸”ë™ì­
 void Ace(struct card* x, int turn, int* A) {
 	int d = 0;
 	for (int k = 0; k < turn; k++) {
@@ -444,20 +444,20 @@ int score(struct card* x, int turn, int who) {
 }
 int black(struct card* x) {
 	char a[100];
-	printf("¿£ÅÍ¸¦ ´­·¯ÁÖ¼¼¿ä.");
+	printf("ì—”í„°ë¥¼ ëˆŒëŸ¬ì£¼ì„¸ìš”.");
 	getchar();
 	gets(a);
 	clear(30);
 	print_card(x, 1, 2);
 	if (x[1].value + x[3].value == 21) {
-		printf("µô·¯ Á¡¼ö : Black Jack!\n");
+		printf("ë”œëŸ¬ ì ìˆ˜ : Black Jack!\n");
 	}
 	else {
-		printf("µô·¯ Á¡¼ö : %d\n", score(x, 1, 4));
+		printf("ë”œëŸ¬ ì ìˆ˜ : %d\n", score(x, 1, 4));
 	}
 	clear(5);
 	print_card(x, 0, 2);
-	printf("ÇÃ·¹ÀÌ¾î Á¡¼ö : Black Jack!\n");
+	printf("í”Œë ˆì´ì–´ ì ìˆ˜ : Black Jack!\n");
 	if (x[1].value + x[3].value == 21) {
 		clear(2);
 		return(4);
@@ -476,7 +476,7 @@ int hit_or_stay(int turn) {
 				break;
 			}
 			else {
-				printf("1 ¶Ç´Â 2 ¶Ç´Â 3 ¸¸ ÀÔ·Â °¡´ÉÇÕ´Ï´Ù.\n");
+				printf("1 ë˜ëŠ” 2 ë˜ëŠ” 3 ë§Œ ì…ë ¥ ê°€ëŠ¥í•©ë‹ˆë‹¤.\n");
 			}
 		}
 		else {
@@ -486,7 +486,7 @@ int hit_or_stay(int turn) {
 				break;
 			}
 			else {
-				printf("1°ú 2¸¸ ÀÔ·Â °¡´ÉÇÕ´Ï´Ù.\n");
+				printf("1ê³¼ 2ë§Œ ì…ë ¥ ê°€ëŠ¥í•©ë‹ˆë‹¤.\n");
 			}
 		}
 	}
@@ -498,20 +498,20 @@ int stay(struct card* x, int* player_turn, int* dealer_turn) {
 	*dealer_turn = *dealer_turn + 1;
 	while (1) {
 		*dealer_turn = *dealer_turn + 1;
-		printf("µô·¯ÀÇ Ä«µå È®ÀÎ\n\n\n\n\n¿£ÅÍ¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä.");
+		printf("ë”œëŸ¬ì˜ ì¹´ë“œ í™•ì¸\n\n\n\n\nì—”í„°ë¥¼ ì…ë ¥í•´ì£¼ì„¸ìš”.");
 		gets(a);
 		clear(50);
 		d = score(x, *dealer_turn, 2);
 		print_card(x, 1, *dealer_turn);
 		if (d != 2) {
-			printf("µô·¯ Á¡¼ö : %d", score(x, *dealer_turn, 4));
+			printf("ë”œëŸ¬ ì ìˆ˜ : %d", score(x, *dealer_turn, 4));
 		}
 		else if (d == 2) {
-			printf("µô·¯ Á¡¼ö : BUST!");
+			printf("ë”œëŸ¬ ì ìˆ˜ : BUST!");
 		}
 		clear(6);
 		print_card(x, 0, *player_turn);
-		printf("ÇÃ·¹ÀÌ¾î Á¡¼ö : %d\n", score(x, *player_turn, 3));
+		printf("í”Œë ˆì´ì–´ ì ìˆ˜ : %d\n", score(x, *player_turn, 3));
 		clear(2);
 		if (d != 0) {
 			break;
@@ -547,7 +547,7 @@ int turn(struct card* x, int* player_turn, int* dealer_turn) {
 
 	bust = score(x, *player_turn, 1);
 	if (bust == 0) {
-		printf("ÇÃ·¹ÀÌ¾î Á¡¼ö : %d\n", score(x, *player_turn, 3));
+		printf("í”Œë ˆì´ì–´ ì ìˆ˜ : %d\n", score(x, *player_turn, 3));
 		clear(8);
 		hs = hit_or_stay(*player_turn);
 		if (hs == 1) {
@@ -555,20 +555,20 @@ int turn(struct card* x, int* player_turn, int* dealer_turn) {
 			turn(x, player_turn, dealer_turn);
 		}
 		else if (hs == 3) {
-			return(2);//¼­·£´õ
+			return(2);//ì„œëœë”
 		}
 		else {
-			return(stay(x, player_turn, dealer_turn));//½Â0 ÆĞ1 ¹«4
+			return(stay(x, player_turn, dealer_turn));//ìŠ¹0 íŒ¨1 ë¬´4
 		}
 	}
 	else if (bust == 2) {
-		printf("ÇÃ·¹ÀÌ¾î Á¡¼ö : Black Jack!\n");
+		printf("í”Œë ˆì´ì–´ ì ìˆ˜ : Black Jack!\n");
 		clear(9);
 		return(black(x));
 	}
 	else {
-		printf("ÇÃ·¹ÀÌ¾î Á¡¼ö : BUST!\n\n\n");
-		return(3);//¹ö½ºÆ®
+		printf("í”Œë ˆì´ì–´ ì ìˆ˜ : BUST!\n\n\n");
+		return(3);//ë²„ìŠ¤íŠ¸
 	}
 
 }
@@ -580,55 +580,55 @@ int how_much(int* money1, int bet, int result) {
 		*money1 = *money1 + bet * 2;
 		printf("YOU WIN");
 		clear(2);
-		printf("º£ÆÃ ±İ¾× : %d¸¸¿ø\n", bet);
+		printf("ë² íŒ… ê¸ˆì•¡ : %dë§Œì›\n", bet);
 		printf("            %d + %d\n", *money1 - bet, bet);
-		printf("³²Àº ÀÚ»ê : %d¸¸¿ø\n\n", *money1);
+		printf("ë‚¨ì€ ìì‚° : %dë§Œì›\n\n", *money1);
 		break;
 	case(1):
 		*money1 = *money1;
 		printf("YOU LOSE");
 		clear(2);
-		printf("º£ÆÃ ±İ¾× : %d¸¸¿ø\n", bet);
+		printf("ë² íŒ… ê¸ˆì•¡ : %dë§Œì›\n", bet);
 		printf("            %d - %d\n", *money1 + bet, bet);
-		printf("³²Àº ÀÚ»ê : %d¸¸¿ø\n\n", *money1);
+		printf("ë‚¨ì€ ìì‚° : %dë§Œì›\n\n", *money1);
 		break;
 	case(2):
 		*money1 = *money1 + bet / 2;
 		clear(1);
 		printf("SURRENDER");
 		clear(2);
-		printf("º£ÆÃ ±İ¾× : %d¸¸¿ø\n", bet);
+		printf("ë² íŒ… ê¸ˆì•¡ : %dë§Œì›\n", bet);
 		printf("            %.0f + %d\n", *money1 - bet * 0.5, bet / 2);
-		printf("³²Àº ÀÚ»ê : %d¸¸¿ø\n", *money1);
+		printf("ë‚¨ì€ ìì‚° : %dë§Œì›\n", *money1);
 		getchar();
 		break;
 	case(3):
 		*money1 = *money1;
 		printf("YOU BUST");
 		clear(2);
-		printf("º£ÆÃ ±İ¾× : %d¸¸¿ø\n", bet);
+		printf("ë² íŒ… ê¸ˆì•¡ : %dë§Œì›\n", bet);
 		printf("            %d - %d\n", *money1 + bet, bet);
-		printf("³²Àº ÀÚ»ê : %d¸¸¿ø\n\n", *money1);
+		printf("ë‚¨ì€ ìì‚° : %dë§Œì›\n\n", *money1);
 		getchar();
 		break;
 	case(4):
 		*money1 = *money1 + bet;
 		printf("DRAW");
 		clear(2);
-		printf("º£ÆÃ ±İ¾× : %d¸¸¿ø\n", bet);
-		printf("³²Àº ÀÚ»ê : %d¸¸¿ø\n\n\n", *money1);
+		printf("ë² íŒ… ê¸ˆì•¡ : %dë§Œì›\n", bet);
+		printf("ë‚¨ì€ ìì‚° : %dë§Œì›\n\n\n", *money1);
 		break;
 	case(5):
 		*money1 = *money1 + bet * 2.5;
 		clear(2);
 		printf("BLACK JACK!!");
 		clear(2);
-		printf("º£ÆÃ ±İ¾× : %d¸¸¿ø\n", bet);
+		printf("ë² íŒ… ê¸ˆì•¡ : %dë§Œì›\n", bet);
 		printf("            %.0f + %.0f\n", *money1 - bet * 1.5, bet * 1.5);
-		printf("³²Àº ÀÚ»ê : %d¸¸¿ø\n\n", *money1);
+		printf("ë‚¨ì€ ìì‚° : %dë§Œì›\n\n", *money1);
 		break;
 	}
-	printf("¿£ÅÍ¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä");
+	printf("ì—”í„°ë¥¼ ì…ë ¥í•´ì£¼ì„¸ìš”");
 	gets(tmp);
 	if (best < *money1) {
 		best = *money1;
@@ -667,30 +667,30 @@ void black_jack(int* money) {
 }
 
 
-//¹ÙÄ«¶ó
+//ë°”ì¹´ë¼
 void bet_baccarat(int* money, int* bet, int* whom) {
 	int a;
 	clear(50);
-	printf("ÇÃ·¹ÀÌ¾î : 1           µô·¯ : 2           Tie : 3          Pair : 4\n");
-	printf("º£ÆÃ ´ë»óÀ» ¼±ÅÃÇØÁÖ¼¼¿ä : ");
+	printf("í”Œë ˆì´ì–´ : 1           ë”œëŸ¬ : 2           Tie : 3          Pair : 4\n");
+	printf("ë² íŒ… ëŒ€ìƒì„ ì„ íƒí•´ì£¼ì„¸ìš” : ");
 	scanf("%d", &a);
 	while (1) {
 		if (a == 1 || a == 2 || a == 3 || a == 4) {
 			break;
 		}
 		clear(50);
-		printf("¸ñ·Ï Áß ÇÏ³ª¸¸ ¼±ÅÃÇÏ¿© ÁÖ¼¼¿ä\n");
-		printf("ÇÃ·¹ÀÌ¾î : 1           µô·¯ : 2           Tie : 3          Pair : 4\n");
-		printf("º£ÆÃ ´ë»óÀ» ¼±ÅÃÇØÁÖ¼¼¿ä : ");
+		printf("ëª©ë¡ ì¤‘ í•˜ë‚˜ë§Œ ì„ íƒí•˜ì—¬ ì£¼ì„¸ìš”\n");
+		printf("í”Œë ˆì´ì–´ : 1           ë”œëŸ¬ : 2           Tie : 3          Pair : 4\n");
+		printf("ë² íŒ… ëŒ€ìƒì„ ì„ íƒí•´ì£¼ì„¸ìš” : ");
 		scanf("%d", &a);
 	}
 	clear(50);
-	printf("º£ÆÃ ´ë»ó : ");
+	printf("ë² íŒ… ëŒ€ìƒ : ");
 	if (a == 1) {
-		printf("ÇÃ·¹ÀÌ¾î\n");
+		printf("í”Œë ˆì´ì–´\n");
 	}
 	else if (a == 2) {
-		printf("µô·¯\n");
+		printf("ë”œëŸ¬\n");
 	}
 	else if (a == 3) {
 		printf("Tie\n");
@@ -698,18 +698,18 @@ void bet_baccarat(int* money, int* bet, int* whom) {
 	else {
 		printf("Pair\n");
 	}
-	printf("ÇöÀç ÀÚ»ê : %d¸¸¿ø\n", *money);
-	printf("º£ÆÃ ±İ¾×À» ÀÔ·ÂÇØÁÖ¼¼¿ä(´ÜÀ§ : ¸¸¿ø) : ");
+	printf("í˜„ì¬ ìì‚° : %dë§Œì›\n", *money);
+	printf("ë² íŒ… ê¸ˆì•¡ì„ ì…ë ¥í•´ì£¼ì„¸ìš”(ë‹¨ìœ„ : ë§Œì›) : ");
 	scanf("%d", bet);
 	while (1) {
 		if (*bet > *money) {
 			clear(50);
-			printf("º£ÆÃ ´ë»ó : ");
+			printf("ë² íŒ… ëŒ€ìƒ : ");
 			if (a == 1) {
-				printf("ÇÃ·¹ÀÌ¾î\n");
+				printf("í”Œë ˆì´ì–´\n");
 			}
 			else if (a == 2) {
-				printf("µô·¯\n");
+				printf("ë”œëŸ¬\n");
 			}
 			else if (a == 3) {
 				printf("Tie\n");
@@ -717,18 +717,18 @@ void bet_baccarat(int* money, int* bet, int* whom) {
 			else {
 				printf("Pair\n");
 			}
-			printf("ÇöÀç ÀÚ»ê : ¸¸¿ø%d\n", *money);
-			printf("¼ÒÁö ±İ¾×º¸´Ù ÀûÀº °ªÀ» ÀÔ·ÂÇØÁÖ¼¼¿ä(´ÜÀ§ : ¸¸¿ø) :");
+			printf("í˜„ì¬ ìì‚° : ë§Œì›%d\n", *money);
+			printf("ì†Œì§€ ê¸ˆì•¡ë³´ë‹¤ ì ì€ ê°’ì„ ì…ë ¥í•´ì£¼ì„¸ìš”(ë‹¨ìœ„ : ë§Œì›) :");
 			scanf("%d", bet);
 		}
 		else if (*bet == 0) {
 			clear(50);
-			printf("º£ÆÃ ´ë»ó : ");
+			printf("ë² íŒ… ëŒ€ìƒ : ");
 			if (a == 1) {
-				printf("ÇÃ·¹ÀÌ¾î\n");
+				printf("í”Œë ˆì´ì–´\n");
 			}
 			else if (a == 2) {
-				printf("µô·¯\n");
+				printf("ë”œëŸ¬\n");
 			}
 			else if (a == 3) {
 				printf("Tie\n");
@@ -736,8 +736,8 @@ void bet_baccarat(int* money, int* bet, int* whom) {
 			else {
 				printf("Pair\n");
 			}
-			printf("ÇöÀç ÀÚ»ê : ¸¸¿ø%d\n", *money);
-			printf("0º¸´Ù Å« ±İ¾×À» ÀÔ·ÂÇØÁÖ¼¼¿ä(´ÜÀ§ : ¸¸¿ø) : ");
+			printf("í˜„ì¬ ìì‚° : ë§Œì›%d\n", *money);
+			printf("0ë³´ë‹¤ í° ê¸ˆì•¡ì„ ì…ë ¥í•´ì£¼ì„¸ìš”(ë‹¨ìœ„ : ë§Œì›) : ");
 			scanf("%d", bet);
 		}
 		else {
@@ -758,10 +758,10 @@ void print_baccarat(struct card* x, int pt, int dt, int ds, int ps) {
 
 	clear(50);
 	print_card(x, 1, dt);
-	printf("µô·¯ Á¡¼ö : %d", ds);
+	printf("ë”œëŸ¬ ì ìˆ˜ : %d", ds);
 	clear(6);
 	print_card(x, 0, pt);
-	printf("ÇÃ·¹ÀÌ¾î Á¡¼ö : %d", ps);
+	printf("í”Œë ˆì´ì–´ ì ìˆ˜ : %d", ps);
 	clear(2);
 
 }
@@ -786,7 +786,7 @@ void baccarat(int* money) {
 	ps = score_baccarat(x, 0, pt);
 
 	print_baccarat(x, pt, dt, ds, ps);
-	printf("¿£ÅÍ¸¦ ´­·¯ÁÖ¼¼¿ä");
+	printf("ì—”í„°ë¥¼ ëˆŒëŸ¬ì£¼ì„¸ìš”");
 	gets(d);
 
 	print_baccarat(x, pt, dt, ds, ps);
@@ -796,7 +796,7 @@ void baccarat(int* money) {
 		casee = 0;
 	}
 	else if (0 <= ps && ds <= 5) {
-		printf("ÇÃ·¹ÀÌ¾î : HIT\n\n");
+		printf("í”Œë ˆì´ì–´ : HIT\n\n");
 		pt++;
 		casee = 1;
 	}
@@ -804,11 +804,11 @@ void baccarat(int* money) {
 		casee = 3;
 	}
 	else {
-		printf("ÇÃ·¹ÀÌ¾î : STAND\n\n");
+		printf("í”Œë ˆì´ì–´ : STAND\n\n");
 		casee = 2;
 	}
 	clear(2);
-	printf("¿£ÅÍ¸¦ ´­·¯ÁÖ¼¼¿ä");
+	printf("ì—”í„°ë¥¼ ëˆŒëŸ¬ì£¼ì„¸ìš”");
 	gets(d);
 
 	ds = score_baccarat(x, 1, dt);
@@ -827,60 +827,60 @@ void baccarat(int* money) {
 	else {
 		if (casee == 1) {
 			if (0 <= ds && ds <= 2) {
-				printf("µô·¯ : HIT\n\n");
+				printf("ë”œëŸ¬ : HIT\n\n");
 				dt++;
 			}
 			else if (ds == 3) {
 				if (0 <= x[4].value && x[4].value <= 7) {
-					printf("µô·¯ : HIT\n\n");
+					printf("ë”œëŸ¬ : HIT\n\n");
 					dt++;
 				}
 				else {
-					printf("µô·¯ : STAND\n\n");
+					printf("ë”œëŸ¬ : STAND\n\n");
 				}
 			}
 			else if (ds == 4) {
 				if (2 <= x[4].value && x[4].value <= 7) {
-					printf("µô·¯ : HIT\n\n");
+					printf("ë”œëŸ¬ : HIT\n\n");
 					dt++;
 				}
 				else {
-					printf("µô·¯ : STAND\n\n");
+					printf("ë”œëŸ¬ : STAND\n\n");
 				}
 			}
 			else if (ds == 5) {
 				if (4 <= x[4].value && x[4].value <= 7) {
-					printf("µô·¯ : HIT\n\n");
+					printf("ë”œëŸ¬ : HIT\n\n");
 					dt++;
 				}
 				else {
-					printf("µô·¯ : STAND\n\n");
+					printf("ë”œëŸ¬ : STAND\n\n");
 				}
 			}
 			else if (ds == 6) {
 				if (6 <= x[4].value && x[4].value <= 7) {
-					printf("µô·¯ : HIT\n\n");
+					printf("ë”œëŸ¬ : HIT\n\n");
 					dt++;
 				}
 				else {
-					printf("µô·¯ : STAND\n\n");
+					printf("ë”œëŸ¬ : STAND\n\n");
 				}
 			}
 			else if (ds == 7) {
-				printf("µô·¯ : STAND\n\n");
+				printf("ë”œëŸ¬ : STAND\n\n");
 			}
 		}
 		else if (casee == 2) {
 			if (0 <= ds && ds <= 5) {
-				printf("µô·¯ : HIT\n\n");
+				printf("ë”œëŸ¬ : HIT\n\n");
 				dt++;
 			}
 			else {
-				printf("µô·¯ : STAND\n\n");
+				printf("ë”œëŸ¬ : STAND\n\n");
 			}
 		}
 		clear(2);
-		printf("¿£ÅÍ¸¦ ´­·¯ °á°ú¸¦ È®ÀÎÇÏ¼¼¿ä");
+		printf("ì—”í„°ë¥¼ ëˆŒëŸ¬ ê²°ê³¼ë¥¼ í™•ì¸í•˜ì„¸ìš”");
 		gets(d);
 	}
 
@@ -892,68 +892,68 @@ void baccarat(int* money) {
 	print_baccarat(x, pt, dt, ds, ps);
 
 	if (bet_whom == 1) {
-		printf("º£ÆÃ´ë»ó : ÇÃ·¹ÀÌ¾î     ±İ¾× : %d¸¸¿ø\n", betting);
+		printf("ë² íŒ…ëŒ€ìƒ : í”Œë ˆì´ì–´     ê¸ˆì•¡ : %dë§Œì›\n", betting);
 	}
 	else if (bet_whom == 2) {
-		printf("º£ÆÃ´ë»ó : µô·¯         ±İ¾× : %d¸¸¿ø\n", betting);
+		printf("ë² íŒ…ëŒ€ìƒ : ë”œëŸ¬         ê¸ˆì•¡ : %dë§Œì›\n", betting);
 	}
 	else if (bet_whom == 3) {
-		printf("º£ÆÃ´ë»ó : TIE         ±İ¾× : %d¸¸¿ø\n", betting);
+		printf("ë² íŒ…ëŒ€ìƒ : TIE         ê¸ˆì•¡ : %dë§Œì›\n", betting);
 	}
 	else {
-		printf("º£ÆÃ´ë»ó : PAIR       ±İ¾× : %d¸¸¿ø\n", betting);
+		printf("ë² íŒ…ëŒ€ìƒ : PAIR       ê¸ˆì•¡ : %dë§Œì›\n", betting);
 	}
 	if (ps > ds) {
-		printf("°á°ú : ÇÃ·¹ÀÌ¾î ½Â¸®\n");
+		printf("ê²°ê³¼ : í”Œë ˆì´ì–´ ìŠ¹ë¦¬\n");
 		if (bet_whom == 1) {
 			printf("            %d + %d\n", *money, betting);
 			*money = *money + betting;
-			printf("³²Àº ÀÚ»ê : %d¸¸¿ø\n", *money);
+			printf("ë‚¨ì€ ìì‚° : %dë§Œì›\n", *money);
 		}
 		else {
 			printf("            %d - %d\n", *money, betting);
 			*money = *money - betting;
-			printf("³²Àº ÀÚ»ê : %d¸¸¿ø\n", *money);
+			printf("ë‚¨ì€ ìì‚° : %dë§Œì›\n", *money);
 		}
 	}
 	else if (ds > ps) {
-		printf("°á°ú : µô·¯ ½Â¸®\n");
+		printf("ê²°ê³¼ : ë”œëŸ¬ ìŠ¹ë¦¬\n");
 		if (bet_whom == 2) {
 			printf("            %d + %d\n", *money, betting);
 			*money = *money + betting;
-			printf("³²Àº ÀÚ»ê : %d¸¸¿ø\n", *money);
+			printf("ë‚¨ì€ ìì‚° : %dë§Œì›\n", *money);
 		}
 		else {
 			printf("            %d - %d\n", *money, betting);
 			*money = *money - betting;
-			printf("³²Àº ÀÚ»ê : %d¸¸¿ø\n", *money);
+			printf("ë‚¨ì€ ìì‚° : %dë§Œì›\n", *money);
 		}
 	}
 	else {
 		if (casee == 3) {
-			printf("°á°ú : PAIR\n");
+			printf("ê²°ê³¼ : PAIR\n");
 			if (bet_whom == 4) {
 				printf("            %d + %d\n", *money, betting * 11);
 				*money = *money + betting * 11;
-				printf("³²Àº ÀÚ»ê : %d\n", *money);
+				printf("ë‚¨ì€ ìì‚° : %d\n", *money);
 			}
 		}
 		else {
-			printf("°á°ú : TIE\n");
+			printf("ê²°ê³¼ : TIE\n");
 			if (bet_whom == 3) {
 				printf("            %d + %d\n", *money, betting * 8);
 				*money = *money + betting * 8;
-				printf("³²Àº ÀÚ»ê : %d\n", *money);
+				printf("ë‚¨ì€ ìì‚° : %d\n", *money);
 			}
 			else {
 				printf("            %d - %d\n", *money, betting);
 				*money = *money - betting;
-				printf("³²Àº ÀÚ»ê : %d\n", *money);
+				printf("ë‚¨ì€ ìì‚° : %d\n", *money);
 			}
 		}
 	}
 	printf("\n");
-	printf("¿£ÅÍ¸¦ ´­·¯ÁÖ¼¼¿ä");
+	printf("ì—”í„°ë¥¼ ëˆŒëŸ¬ì£¼ì„¸ìš”");
 	gets(d);
 	if (best < *money) {
 		best = *money;
@@ -970,14 +970,14 @@ void baccarat(int* money) {
 		}
 	}
 	else {
-		printf("¿£ÅÍ¸¦ ´­·¯ÁÖ¼¼¿ä");
+		printf("ì—”í„°ë¥¼ ëˆŒëŸ¬ì£¼ì„¸ìš”");
 		gets(d);
 		end_game(1);
 	}
 }
 
 
-//¾²¸®Ä«µå
+//ì“°ë¦¬ì¹´ë“œ
 int count(struct card* x, int who) {
 	char val[50];
 	int d[3];
@@ -1019,27 +1019,27 @@ int count(struct card* x, int who) {
 	strcpy(val, x[f[0]].number);
 	strcat(val, x[f[0]].symbol);
 	strcat(val, " ");
-	strcat(val, "Å¾");
+	strcat(val, "íƒ‘");
 	score = 1000 + x[f[0]].value * 10 + x[f[0]].id / 100;
 	if (d[0] % 100 == d[1] % 100) {
 		strcpy(val, x[f[0]].number);
 		strcat(val, x[f[0]].symbol);
 		strcat(val, " ");
-		strcat(val, "¿ø ÆĞ¾î");
+		strcat(val, "ì› íŒ¨ì–´");
 		score = 2000 + x[f[0]].value * 10 + x[f[0]].id / 100;
 	}
 	if (d[1] % 100 == d[2] % 100) {
 		strcpy(val, x[f[1]].number);
 		strcat(val, x[f[1]].symbol);
 		strcat(val, " ");
-		strcat(val, "¿ø ÆĞ¾î");
+		strcat(val, "ì› íŒ¨ì–´");
 		score = 2000 + x[f[1]].value * 10 + x[f[1]].id / 100;
 	}
 	if (d[0] - d[0] % 100 == d[1] - d[1] % 100 && d[1] - d[1] % 100 == d[2] - d[2] % 100) {
 		strcpy(val, x[f[0]].number);
 		strcat(val, x[f[0]].symbol);
 		strcat(val, " ");
-		strcat(val, "ÇÃ·¯½¬");
+		strcat(val, "í”ŒëŸ¬ì‰¬");
 		score = 3000 + x[f[0]].value * 10 + x[f[0]].id / 100;
 	}
 	if (d[0] - d[0] % 100 == 14) {
@@ -1052,7 +1052,7 @@ int count(struct card* x, int who) {
 			strcpy(val, x[f[1]].number);
 			strcat(val, x[f[1]].symbol);
 			strcat(val, " ");
-			strcat(val, "½ºÆ®·¹ÀÌÆ®");
+			strcat(val, "ìŠ¤íŠ¸ë ˆì´íŠ¸");
 			score = 4000 + x[f[1]].value * 10 + x[f[0]].id / 100;
 		}
 	}
@@ -1060,14 +1060,14 @@ int count(struct card* x, int who) {
 		strcpy(val, x[f[0]].number);
 		strcat(val, x[f[0]].symbol);
 		strcat(val, " ");
-		strcat(val, "½ºÆ®·¹ÀÌÆ®");
+		strcat(val, "ìŠ¤íŠ¸ë ˆì´íŠ¸");
 		score = 4000 + x[f[0]].value * 10 + x[f[0]].id / 100;
 	}
 	if (d[0] % 100 == d[1] % 100 && d[0] % 100 == d[2] % 100) {
 		strcpy(val, x[f[0]].number);
 		strcat(val, x[f[0]].symbol);
 		strcat(val, " ");
-		strcat(val, "Æ®¸®ÇÃ");
+		strcat(val, "íŠ¸ë¦¬í”Œ");
 		score = 5000 + x[f[0]].value * 10 + x[f[0]].id / 100;
 	}
 	if (d[0] - d[0] % 100 == 14) {
@@ -1080,7 +1080,7 @@ int count(struct card* x, int who) {
 			strcpy(val, x[f[1]].number);
 			strcat(val, x[f[1]].symbol);
 			strcat(val, " ");
-			strcat(val, "½ºÆ®·¹ÀÌÆ® ÇÃ·¯½¬");
+			strcat(val, "ìŠ¤íŠ¸ë ˆì´íŠ¸ í”ŒëŸ¬ì‰¬");
 			score = 6000 + x[f[1]].value * 10 + x[f[1]].id / 100;
 		}
 	}
@@ -1088,7 +1088,7 @@ int count(struct card* x, int who) {
 		strcpy(val, x[f[0]].number);
 		strcat(val, x[f[0]].symbol);
 		strcat(val, " ");
-		strcat(val, "½ºÆ®·¹ÀÌÆ® ÇÃ·¯½¬");
+		strcat(val, "ìŠ¤íŠ¸ë ˆì´íŠ¸ í”ŒëŸ¬ì‰¬");
 		score = 6000 + x[f[0]].value * 10 + x[f[0]].id / 100;
 	}
 	printf(" %s\n", val);
@@ -1097,7 +1097,7 @@ int count(struct card* x, int who) {
 }
 void get_card(struct card* x) {
 	clear(50);
-	printf("µô·¯ÀÇ Ä«µå :\n");
+	printf("ë”œëŸ¬ì˜ ì¹´ë“œ :\n");
 	print_card_back(3);
 	clear(5);
 	print_card(x, 0, 3);
@@ -1114,7 +1114,7 @@ int what_do() {
 			break;
 		}
 		else {
-			printf("1°ú 2¸¸ ÀÔ·Â °¡´ÉÇÕ´Ï´Ù.\n");
+			printf("1ê³¼ 2ë§Œ ì…ë ¥ ê°€ëŠ¥í•©ë‹ˆë‹¤.\n");
 		}
 
 	}
@@ -1124,42 +1124,42 @@ void three_result(int state, int* money, int bet) {
 	char tmp[50];
 	if (state == 1) {
 		printf("WIN!\n\n");
-		printf("ÃÊ±â ÀÚ»ê : %d¸¸¿ø\n", *money + bet);
-		printf("º£ÆÃ ±İ¾× : %d¸¸¿ø        PUSH ±İ¾× : %d¸¸¿ø\n", bet, push);
+		printf("ì´ˆê¸° ìì‚° : %dë§Œì›\n", *money + bet);
+		printf("ë² íŒ… ê¸ˆì•¡ : %dë§Œì›        PUSH ê¸ˆì•¡ : %dë§Œì›\n", bet, push);
 		printf("            %d + %d + %d\n", *money + bet, bet, push);
 		*money = *money + bet * 2 + push;
-		printf("ÇöÀç ÀÚ»ê : %d¸¸¿ø\n", *money);
+		printf("í˜„ì¬ ìì‚° : %dë§Œì›\n", *money);
 		push = 0;
 	}
 	else if (state == 2) {
 		printf("LOSE!\n\n");
-		printf("ÃÊ±â ÀÚ»ê : %d¸¸¿ø\n", *money + bet);
-		printf("º£ÆÃ ±İ¾× : %d¸¸¿ø      PUSH ±İ¾× : %d¸¸¿ø\n", bet, push);
+		printf("ì´ˆê¸° ìì‚° : %dë§Œì›\n", *money + bet);
+		printf("ë² íŒ… ê¸ˆì•¡ : %dë§Œì›      PUSH ê¸ˆì•¡ : %dë§Œì›\n", bet, push);
 		printf("            %d - %d\n", *money + bet, bet);
 		push = 0;
-		printf("ÇöÀç ÀÚ»ê : %d¸¸¿ø      PUSH : %d¸¸¿ø\n", *money, push);
+		printf("í˜„ì¬ ìì‚° : %dë§Œì›      PUSH : %dë§Œì›\n", *money, push);
 
 	}
 	else if (state == 3) {
 		printf("PUSH!\n\n");
-		printf("ÃÊ±â ÀÚ»ê : %d¸¸¿ø\n", *money + bet);
-		printf("º£ÆÃ ±İ¾× : %d¸¸¿ø      PUSH ±İ¾× : %d¸¸¿ø\n", bet, push);
+		printf("ì´ˆê¸° ìì‚° : %dë§Œì›\n", *money + bet);
+		printf("ë² íŒ… ê¸ˆì•¡ : %dë§Œì›      PUSH ê¸ˆì•¡ : %dë§Œì›\n", bet, push);
 		push += bet * 0.5;
 		printf("            %d - %d    PUSH = %d\n", *money + bet, bet / 2, push);
 		*money += bet * 0.5;
-		printf("ÇöÀç ÀÚ»ê : %d¸¸¿ø          PUSH : %d¸¸¿ø\n", *money, push);
+		printf("í˜„ì¬ ìì‚° : %dë§Œì›          PUSH : %dë§Œì›\n", *money, push);
 
 	}
 	else {
 		printf("FOLD!\n\n");
-		printf("ÃÊ±â ÀÚ»ê : %d\n", *money + bet);
-		printf("º£ÆÃ ±İ¾× : %d¸¸¿ø      PUSH ±İ¾× : %d¸¸¿ø\n", bet, push);
+		printf("ì´ˆê¸° ìì‚° : %d\n", *money + bet);
+		printf("ë² íŒ… ê¸ˆì•¡ : %dë§Œì›      PUSH ê¸ˆì•¡ : %dë§Œì›\n", bet, push);
 		printf("            %d - %d + %d\n", *money + bet, bet, bet / 2);
 		*money += bet * 0.5;
-		printf("ÇöÀç ÀÚ»ê : %d¸¸¿ø      PUSH : %d¸¸¿ø\n", *money, push);
+		printf("í˜„ì¬ ìì‚° : %dë§Œì›      PUSH : %dë§Œì›\n", *money, push);
 
 	}
-	printf("¿£ÅÍ¸¦ ´­·ÁÁÖ¼¼¿ä.\n");
+	printf("ì—”í„°ë¥¼ ëˆŒë ¤ì£¼ì„¸ìš”.\n");
 	gets(tmp);
 	printf("\n");
 }
@@ -1188,20 +1188,20 @@ void three_card(int* money) {
 		clear(2);
 		if (d_s >= 1121) {
 			if (p_s > d_s) {
-				three_result(1, money, bet);//½Â
+				three_result(1, money, bet);//ìŠ¹
 			}
 			else {
-				three_result(2, money, bet);//ÆĞ
+				three_result(2, money, bet);//íŒ¨
 			}
 		}
 		else {
-			three_result(3, money, bet);//¹«
+			three_result(3, money, bet);//ë¬´
 		}
 	}
 	else {
 		get_card(x);
 		clear(2);
-		three_result(4, money, bet);//Æ÷
+		three_result(4, money, bet);//í¬
 	}
 
 	if (*money > best) {
@@ -1224,7 +1224,7 @@ void three_card(int* money) {
 }
 
 
-//°æ¸¶
+//ê²½ë§ˆ
 void run_horse(int step1, int step2, int step3, int step4, int delay, int len) {
 
 	int end = len;
@@ -1441,7 +1441,7 @@ void bet_horse() {
 	printf("      /  \\   |  '        '   \\   |     ^          ' <'`\\ ,_ / '\\              \\   |           \n");
 	printf("      ^   ^  ^               ^   ^                  ^   \\       \\             ^   ^              \n");
 	printf("\n");
-	printf("         1¹ø ¸¶                2¹ø ¸¶                   3¹ø ¸¶                4¹ø ¸¶\n");
+	printf("         1ë²ˆ ë§ˆ                2ë²ˆ ë§ˆ                   3ë²ˆ ë§ˆ                4ë²ˆ ë§ˆ\n");
 
 }
 void horse_run(int* money) {
@@ -1453,7 +1453,7 @@ void horse_run(int* money) {
 	clear(50);
 	system("mode con cols=150 lines=35");
 	bet_horse();
-	printf("\n                             ¹èÆÃÇÒ ¸»À» ¼±ÅÃÇØÁÖ¼¼¿ä.\n\n");
+	printf("\n                             ë°°íŒ…í•  ë§ì„ ì„ íƒí•´ì£¼ì„¸ìš”.\n\n");
 	scanf("%d", &horse);
 	getchar();
 	while (1) {
@@ -1475,7 +1475,7 @@ void horse_run(int* money) {
 		}
 		else {
 			bet_horse();
-			printf("\n                             1~4¹ø ¸¶ Áß¿¡¼­¸¸ ¼±ÅÃÇØÁÖ¼¼¿ä.\n");
+			printf("\n                             1~4ë²ˆ ë§ˆ ì¤‘ì—ì„œë§Œ ì„ íƒí•´ì£¼ì„¸ìš”.\n");
 			scanf("%d", &horse);
 			getchar();
 		}
@@ -1485,7 +1485,7 @@ void horse_run(int* money) {
 	betting(money, &bet);
 	clear(50);
 	run_horse(0, 0, 0, 0, 500, 100);
-	printf("\n¿£ÅÍ¸¦ ´©¸£¸é °æ¸¶¸¦ ½ÃÀÛÇÕ´Ï´Ù.");
+	printf("\nì—”í„°ë¥¼ ëˆ„ë¥´ë©´ ê²½ë§ˆë¥¼ ì‹œì‘í•©ë‹ˆë‹¤.");
 	getchar();
 	gets(b);
 
@@ -1501,19 +1501,19 @@ void horse_run(int* money) {
 		run_horse(h1, h2, h3, h4, 500, 100);
 		if (h1 > 100) {
 			win *= 2;
-			printf("1¹ø ¸¶ ¿ì½Â !!\n");
+			printf("1ë²ˆ ë§ˆ ìš°ìŠ¹ !!\n");
 		}
 		if (h2 > 100) {
 			win *= 3;
-			printf("2¹ø ¸¶ ¿ì½Â !!\n");
+			printf("2ë²ˆ ë§ˆ ìš°ìŠ¹ !!\n");
 		}
 		if (h3 > 100) {
 			win *= 5;
-			printf("3¹ø ¸¶ ¿ì½Â !!\n");
+			printf("3ë²ˆ ë§ˆ ìš°ìŠ¹ !!\n");
 		}
 		if (h4 > 100) {
 			win *= 7;
-			printf("4¹ø ¸¶ ¿ì½Â !!\n");
+			printf("4ë²ˆ ë§ˆ ìš°ìŠ¹ !!\n");
 		}
 		if (win >= 2) {
 			printf("\n");
@@ -1530,13 +1530,13 @@ void horse_run(int* money) {
 
 	}
 	if (win % pick == 0) {
-		printf("¹èÆÃÇÑ ¸» : %d¹ø ¸¶\n", horse);
-		printf("ÀûÁß !\n");
-		printf("ÃÊ±â ÀÚ»ê : %d¸¸¿ø\n", *money + bet);
-		printf("º£ÆÃ ±İ¾× : %d¸¸¿ø\n", bet);
+		printf("ë°°íŒ…í•œ ë§ : %dë²ˆ ë§ˆ\n", horse);
+		printf("ì ì¤‘ !\n");
+		printf("ì´ˆê¸° ìì‚° : %dë§Œì›\n", *money + bet);
+		printf("ë² íŒ… ê¸ˆì•¡ : %dë§Œì›\n", bet);
 		printf("            %d + %d\n", *money + bet, bet * 2);
 		*money = *money + 3 * bet;
-		printf("ÇöÀç ÀÚ»ê : %d¸¸¿ø\n", *money);
+		printf("í˜„ì¬ ìì‚° : %dë§Œì›\n", *money);
 
 
 
@@ -1544,15 +1544,15 @@ void horse_run(int* money) {
 	}
 	else {
 
-		printf("¹èÆÃÇÑ ¸» : %d¹ø ¸¶\n", horse);
-		printf("ºñÀûÁß\n");
-		printf("ÀÌÀü ÀÚ»ê : %d¸¸¿ø\n", *money + bet);
-		printf("º£ÆÃ ±İ¾× : %d¸¸¿ø\n", bet);
+		printf("ë°°íŒ…í•œ ë§ : %dë²ˆ ë§ˆ\n", horse);
+		printf("ë¹„ì ì¤‘\n");
+		printf("ì´ì „ ìì‚° : %dë§Œì›\n", *money + bet);
+		printf("ë² íŒ… ê¸ˆì•¡ : %dë§Œì›\n", bet);
 		printf("            %d - %d\n", *money + bet, bet);
-		printf("ÇöÀç ÀÚ»ê : %d¸¸¿ø\n", *money);
+		printf("í˜„ì¬ ìì‚° : %dë§Œì›\n", *money);
 	}
 
-	printf("\n¿£ÅÍ¸¦ ´­·¯ÁÖ¼¼¿ä");
+	printf("\nì—”í„°ë¥¼ ëˆŒëŸ¬ì£¼ì„¸ìš”");
 	gets(b);
 
 	if (*money > best) {
@@ -1569,7 +1569,7 @@ void horse_run(int* money) {
 		}
 	}
 	else {
-		printf("\n¿£ÅÍ¸¦ ´­·¯ÁÖ¼¼¿ä");
+		printf("\nì—”í„°ë¥¼ ëˆŒëŸ¬ì£¼ì„¸ìš”");
 		gets(b);
 		end_game(1);
 	}
@@ -1578,14 +1578,14 @@ void horse_run(int* money) {
 
 
 
-//±âº»
+//ê¸°ë³¸
 int select_game() {
 	int a;
 	system("mode con cols=103 lines=35");
 	clear(50);
-	printf("                             ÇÃ·¹ÀÌÇÒ °ÔÀÓÀ» ¼±ÅÃÇØÁÖ¼¼¿ä\n\n");
-	printf("     ºí·¢Àè : 1           ¹ÙÄ«¶ó : 2          ¾²¸®Ä«µå Æ÷Ä¿ : 3\n");
-	printf("     °æ¸¶ : 4             °ÔÀÓ ±ÔÄ¢ : 5       Á¾·á : 6\n");
+	printf("                             í”Œë ˆì´í•  ê²Œì„ì„ ì„ íƒí•´ì£¼ì„¸ìš”\n\n");
+	printf("     ë¸”ë™ì­ : 1           ë°”ì¹´ë¼ : 2          ì“°ë¦¬ì¹´ë“œ í¬ì»¤ : 3\n");
+	printf("     ê²½ë§ˆ : 4             ê²Œì„ ê·œì¹™ : 5       ì¢…ë£Œ : 6\n");
 	scanf("%d", &a);
 	while (1) {
 		if (a == 1 || a == 2 || a == 3 || a == 4 || a == 6) {
@@ -1594,16 +1594,16 @@ int select_game() {
 		else if (a == 5) {
 			print_rule();
 			clear(50);
-			printf("                             ÇÃ·¹ÀÌÇÒ °ÔÀÓÀ» ¼±ÅÃÇØÁÖ¼¼¿ä\n\n");
-			printf("     ºí·¢Àè : 1           ¹ÙÄ«¶ó : 2          ¾²¸®Ä«µå Æ÷Ä¿ : 3\n");
-			printf("     °æ¸¶ : 4             °ÔÀÓ ±ÔÄ¢ : 5       Á¾·á : 6\n");
+			printf("                             í”Œë ˆì´í•  ê²Œì„ì„ ì„ íƒí•´ì£¼ì„¸ìš”\n\n");
+			printf("     ë¸”ë™ì­ : 1           ë°”ì¹´ë¼ : 2          ì“°ë¦¬ì¹´ë“œ í¬ì»¤ : 3\n");
+			printf("     ê²½ë§ˆ : 4             ê²Œì„ ê·œì¹™ : 5       ì¢…ë£Œ : 6\n");
 			scanf("%d", &a);
 		}
 		else {
 			clear(50);
-			printf("     ºí·¢Àè : 1           ¹ÙÄ«¶ó : 2          ¾²¸®Ä«µå Æ÷Ä¿ : 3\n");
-			printf("     °æ¸¶ : 4             °ÔÀÓ ±ÔÄ¢ : 5       Á¾·á : 6\n");
-			printf("¸ñ·Ï Áß¿¡¼­¸¸ °ñ¶óÁÖ¼¼¿ä\n");
+			printf("     ë¸”ë™ì­ : 1           ë°”ì¹´ë¼ : 2          ì“°ë¦¬ì¹´ë“œ í¬ì»¤ : 3\n");
+			printf("     ê²½ë§ˆ : 4             ê²Œì„ ê·œì¹™ : 5       ì¢…ë£Œ : 6\n");
+			printf("ëª©ë¡ ì¤‘ì—ì„œë§Œ ê³¨ë¼ì£¼ì„¸ìš”\n");
 			scanf("%d", &a);
 		}
 
@@ -1618,9 +1618,9 @@ void start_game(int game, int* money) {
 		clear(50);
 		printf("                                    !! B L A C K        J A C K !!\n");
 		clear(5);
-		printf("					 °ÔÀÓÀ» ½ÃÀÛÇÕ´Ï´Ù.");
+		printf("					 ê²Œì„ì„ ì‹œì‘í•©ë‹ˆë‹¤.");
 		clear(10);
-		printf("					 ¿£ÅÍ¸¦ ´­·¯ÁÖ¼¼¿ä.");
+		printf("					 ì—”í„°ë¥¼ ëˆŒëŸ¬ì£¼ì„¸ìš”.");
 		getchar();
 		gets(a);
 		black_jack(money);
@@ -1629,9 +1629,9 @@ void start_game(int game, int* money) {
 		clear(50);
 		printf("                                       !! B A C C A R A T !!\n");
 		clear(5);
-		printf("					 °ÔÀÓÀ» ½ÃÀÛÇÕ´Ï´Ù.");
+		printf("					 ê²Œì„ì„ ì‹œì‘í•©ë‹ˆë‹¤.");
 		clear(10);
-		printf("					 ¿£ÅÍ¸¦ ´­·¯ÁÖ¼¼¿ä.");
+		printf("					 ì—”í„°ë¥¼ ëˆŒëŸ¬ì£¼ì„¸ìš”.");
 		getchar();
 		gets(a);
 		baccarat(money);
@@ -1640,20 +1640,20 @@ void start_game(int game, int* money) {
 		clear(50);
 		printf("                                !! T H R E E   C A R D   P O K E R !!\n");
 		clear(5);
-		printf("					 °ÔÀÓÀ» ½ÃÀÛÇÕ´Ï´Ù.");
+		printf("					 ê²Œì„ì„ ì‹œì‘í•©ë‹ˆë‹¤.");
 		clear(10);
-		printf("					 ¿£ÅÍ¸¦ ´­·¯ÁÖ¼¼¿ä.");
+		printf("					 ì—”í„°ë¥¼ ëˆŒëŸ¬ì£¼ì„¸ìš”.");
 		getchar();
 		gets(a);
 		three_card(money);
 	}
 	else if (game == 4) {
 		clear(50);
-		printf("                                    !! °æ                  ¸¶ !!\n");
+		printf("                                    !! ê²½                  ë§ˆ !!\n");
 		clear(5);
-		printf("					 °ÔÀÓÀ» ½ÃÀÛÇÕ´Ï´Ù.");
+		printf("					 ê²Œì„ì„ ì‹œì‘í•©ë‹ˆë‹¤.");
 		clear(10);
-		printf("					 ¿£ÅÍ¸¦ ´­·¯ÁÖ¼¼¿ä.");
+		printf("					 ì—”í„°ë¥¼ ëˆŒëŸ¬ì£¼ì„¸ìš”.");
 		getchar();
 		gets(a);
 		horse_run(money);
@@ -1669,12 +1669,12 @@ void end_game(int a) {
 	system("mode con cols=103 lines=35");
 	if (a == 1) {
 		clear(50);
-		printf("                                             ÆÄ»ê");
+		printf("                                             íŒŒì‚°");
 		clear(15);
 	}
 	else if (a == 2) {
 		clear(50);
-		printf("                                              ³¡");
+		printf("                                              ë");
 		clear(15);
 	}
 	if (best > 1000) {
@@ -1686,7 +1686,7 @@ int done_play() {
 	system("mode con cols=103 lines=35");
 	clear(50);
 	int a;
-	printf("°è¼ÓÇÏ±â : 1                 ´Ù¸¥ °ÔÀÓ : 2      \n");
+	printf("ê³„ì†í•˜ê¸° : 1                 ë‹¤ë¥¸ ê²Œì„ : 2      \n");
 	scanf("%d", &a);
 	getchar();
 	while (1) {
@@ -1694,8 +1694,8 @@ int done_play() {
 			break;
 		}
 		else {
-			printf("1°ú 2Áß¿¡¼­¸¸ °ñ¶óÁÖ¼¼¿ä\n");
-			printf("°è¼ÓÇÏ±â : 1                 ´Ù¸¥ °ÔÀÓ : 2      \n");
+			printf("1ê³¼ 2ì¤‘ì—ì„œë§Œ ê³¨ë¼ì£¼ì„¸ìš”\n");
+			printf("ê³„ì†í•˜ê¸° : 1                 ë‹¤ë¥¸ ê²Œì„ : 2      \n");
 			scanf("%d", &a);
 			getchar();
 		}
@@ -1708,9 +1708,9 @@ void print_rule() {
 	while (1) {
 
 		clear(50);
-		printf("                             ±ÔÄ¢À» º¼ °ÔÀÓÀ» ¼±ÅÃÇØÁÖ¼¼¿ä.\n\n");
-		printf("     ºí·¢Àè : 1           ¹ÙÄ«¶ó : 2       ¾²¸®Ä«µå Æ÷Ä¿ : 3\n");
-		printf("     °æ¸¶ : 4             µ¹¾Æ°¡±â : 5\n");
+		printf("                             ê·œì¹™ì„ ë³¼ ê²Œì„ì„ ì„ íƒí•´ì£¼ì„¸ìš”.\n\n");
+		printf("     ë¸”ë™ì­ : 1           ë°”ì¹´ë¼ : 2       ì“°ë¦¬ì¹´ë“œ í¬ì»¤ : 3\n");
+		printf("     ê²½ë§ˆ : 4             ëŒì•„ê°€ê¸° : 5\n");
 		scanf("%d", &game);
 		getchar();
 		while (1) {
@@ -1722,9 +1722,9 @@ void print_rule() {
 			}
 			else {
 				clear(50);
-				printf("                             ¸ñ·Ï Áß¿¡¼­¸¸ °ñ¶óÁÖ¼¼¿ä.\n\n");
-				printf("     ºí·¢Àè : 1           ¹ÙÄ«¶ó : 2       ¾²¸®Ä«µå Æ÷Ä¿ : 3\n");
-				printf("     °æ¸¶ : 4             µ¹¾Æ°¡±â : 4\n");
+				printf("                             ëª©ë¡ ì¤‘ì—ì„œë§Œ ê³¨ë¼ì£¼ì„¸ìš”.\n\n");
+				printf("     ë¸”ë™ì­ : 1           ë°”ì¹´ë¼ : 2       ì“°ë¦¬ì¹´ë“œ í¬ì»¤ : 3\n");
+				printf("     ê²½ë§ˆ : 4             ëŒì•„ê°€ê¸° : 4\n");
 				scanf("%d", &game);
 				getchar();
 			}
@@ -1733,82 +1733,82 @@ void print_rule() {
 		switch (game) {
 		case(1):
 			clear(50);
-			printf("					 ºí·¢Àè\n\n\n");
-			printf("	µô·¯¿Í ÇÃ·¹ÀÌ¾î(You)°¡ °æÀïÇÕ´Ï´Ù.\n");
-			printf("	Ä«µå ¼ıÀÚÀÇ ÇÕÀÌ 21¿¡ °¡±î¿î ÂÊÀÌ ½Â¸®ÇÕ´Ï´Ù.\n");
-			printf("	J, Q, K´Â 10À¸·Î °è»êÇÕ´Ï´Ù.\n");
-			printf("	A´Â »óÈ²¿¡ µû¶ó 1È¤Àº 11·Î °è»êÇÕ´Ï´Ù. (ÇÁ·Î±×·¥ÀÌ »óÈ²¿¡ ¸ÂÃß¾î À¯¸®ÇÑ ÂÊÀ¸·Î °è»êÇÕ´Ï´Ù.)\n");
-			printf("	Ä«µå ¼ıÀÚÀÇ ÇÕÀÌ 21À» ÃÊ°úÇÏ°Ô µÇ¸é(BUST) ÆĞ¹èÇÕ´Ï´Ù.\n");
+			printf("					 ë¸”ë™ì­\n\n\n");
+			printf("	ë”œëŸ¬ì™€ í”Œë ˆì´ì–´(You)ê°€ ê²½ìŸí•©ë‹ˆë‹¤.\n");
+			printf("	ì¹´ë“œ ìˆ«ìì˜ í•©ì´ 21ì— ê°€ê¹Œìš´ ìª½ì´ ìŠ¹ë¦¬í•©ë‹ˆë‹¤.\n");
+			printf("	J, Q, KëŠ” 10ìœ¼ë¡œ ê³„ì‚°í•©ë‹ˆë‹¤.\n");
+			printf("	AëŠ” ìƒí™©ì— ë”°ë¼ 1í˜¹ì€ 11ë¡œ ê³„ì‚°í•©ë‹ˆë‹¤. (í”„ë¡œê·¸ë¨ì´ ìƒí™©ì— ë§ì¶”ì–´ ìœ ë¦¬í•œ ìª½ìœ¼ë¡œ ê³„ì‚°í•©ë‹ˆë‹¤.)\n");
+			printf("	ì¹´ë“œ ìˆ«ìì˜ í•©ì´ 21ì„ ì´ˆê³¼í•˜ê²Œ ë˜ë©´(BUST) íŒ¨ë°°í•©ë‹ˆë‹¤.\n");
 			printf("\n\n");
-			printf("					°ÔÀÓ ÁøÇà\n\n");
-			printf("	0. ±İ¾×À» ¹èÆÃÇÕ´Ï´Ù.\n");
-			printf("	1. 2ÀåÀÇ Ä«µå¸¦ ³ª´²¹Ş½À´Ï´Ù.\n");
-			printf("	   ÀÌ¶§ µô·¯ÀÇ Ä«µå´Â 1Àå¸¸ °ø°³µË´Ï´Ù.\n");
-			printf("	2. Ä«µå¸¦ ´õ ¹ŞÀ»Áö(HIT), ±×¸¸ ¹ŞÀ»Áö(STAY) ¼±ÅÃÇÕ´Ï´Ù.\n");
-			printf("	   Ä«µå´Â BUST(21 ÃÊ°ú) µÉ ¶§ ±îÁö ¹ŞÀ» ¼ö ÀÖ½À´Ï´Ù.\n");
-			printf("	3. °¡Àå Ã³À½(Ä«µå 2ÀåÀ» ¹ŞÀº Á÷ÈÄ)¿¡ ÇÑÇÏ¿© °ÔÀÓÀ» Æ÷±â(SURRENDER)ÇÒ ¼ö ÀÖ½À´Ï´Ù.\n");
-			printf("	   ¹èÆÃ±İ¾×ÀÇ 0.5¹è¸¦ ¹Ş°í °ÔÀÓÀÌ Á¾·áµË´Ï´Ù. \n");
-			printf("	4. Ç×º¹ÇÏÁö ¾ÊÀº°æ¿ì, 2ÀÇ °úÁ¤À» ¹İº¹ÈÄ\n");
-			printf("	   Ä«µå¸¦ ´õ ÀÌ»ó ¹ŞÁö ¾Ê´Â´Ù´Â ¼±ÅÃ(STAY)À» ÇÏ¸é, µô·¯ÀÇ Â÷·¹°¡ µË´Ï´Ù.\n");
-			printf("	5. µô·¯´Â Á¤ÇØÁø ±ÔÄ¢¿¡ µû¶ó Ä«µå¸¦ ¹Ş½À´Ï´Ù.(16ÀÌÇÏ¸é HIT, 17ÀÌ»óÀÌ¸é STAY)\n");
-			printf("	6. µô·¯ÀÇ Â÷·Ê°¡ ³¡³ª¸é, Ä«µå ¼ıÀÚÀÇ ÇÕÀ¸·Î ½ÂÆĞ¸¦ °áÁ¤ÇÕ´Ï´Ù.\n");
-			printf("	   (21¿¡ °¡±î¿î ÂÊÀÌ ½Â¸®, 21ÃÊ°ú´Â ÆĞ¹è)\n");
-			printf("	7. ½Â¸®½Ã ¹èÆÃ±İ¾×ÀÇ 2¹è, ¹«½ÂºÎ½Ã ¹èÆÃ±İ¾×ÀÇ 1¹è¸¦ ¹Ş°í, ÆĞ¹è½Ã ¹èÆÃ±İ¾×À» ÀÒ½À´Ï´Ù.\n");
-			printf("	8. 1ÀÇ »óÈ²¿¡¼­, Ä«µå ¼ıÀÚÀÇ ÇÕÀÌ 21ÀÌ µÇ¸é(BLACK JACK) ¹èÆÃ ±İ¾×ÀÇ 2.5¹è¸¦ ¹Ş½À´Ï´Ù.\n");
-			printf("	   ´Ü, µô·¯¿ª½Ã 21ÀÏ½Ã, ¹«½ÂºÎ°¡ µË´Ï´Ù.\n");
+			printf("					ê²Œì„ ì§„í–‰\n\n");
+			printf("	0. ê¸ˆì•¡ì„ ë°°íŒ…í•©ë‹ˆë‹¤.\n");
+			printf("	1. 2ì¥ì˜ ì¹´ë“œë¥¼ ë‚˜ëˆ ë°›ìŠµë‹ˆë‹¤.\n");
+			printf("	   ì´ë•Œ ë”œëŸ¬ì˜ ì¹´ë“œëŠ” 1ì¥ë§Œ ê³µê°œë©ë‹ˆë‹¤.\n");
+			printf("	2. ì¹´ë“œë¥¼ ë” ë°›ì„ì§€(HIT), ê·¸ë§Œ ë°›ì„ì§€(STAY) ì„ íƒí•©ë‹ˆë‹¤.\n");
+			printf("	   ì¹´ë“œëŠ” BUST(21 ì´ˆê³¼) ë  ë•Œ ê¹Œì§€ ë°›ì„ ìˆ˜ ìˆìŠµë‹ˆë‹¤.\n");
+			printf("	3. ê°€ì¥ ì²˜ìŒ(ì¹´ë“œ 2ì¥ì„ ë°›ì€ ì§í›„)ì— í•œí•˜ì—¬ ê²Œì„ì„ í¬ê¸°(SURRENDER)í•  ìˆ˜ ìˆìŠµë‹ˆë‹¤.\n");
+			printf("	   ë°°íŒ…ê¸ˆì•¡ì˜ 0.5ë°°ë¥¼ ë°›ê³  ê²Œì„ì´ ì¢…ë£Œë©ë‹ˆë‹¤. \n");
+			printf("	4. í•­ë³µí•˜ì§€ ì•Šì€ê²½ìš°, 2ì˜ ê³¼ì •ì„ ë°˜ë³µí›„\n");
+			printf("	   ì¹´ë“œë¥¼ ë” ì´ìƒ ë°›ì§€ ì•ŠëŠ”ë‹¤ëŠ” ì„ íƒ(STAY)ì„ í•˜ë©´, ë”œëŸ¬ì˜ ì°¨ë ˆê°€ ë©ë‹ˆë‹¤.\n");
+			printf("	5. ë”œëŸ¬ëŠ” ì •í•´ì§„ ê·œì¹™ì— ë”°ë¼ ì¹´ë“œë¥¼ ë°›ìŠµë‹ˆë‹¤.(16ì´í•˜ë©´ HIT, 17ì´ìƒì´ë©´ STAY)\n");
+			printf("	6. ë”œëŸ¬ì˜ ì°¨ë¡€ê°€ ëë‚˜ë©´, ì¹´ë“œ ìˆ«ìì˜ í•©ìœ¼ë¡œ ìŠ¹íŒ¨ë¥¼ ê²°ì •í•©ë‹ˆë‹¤.\n");
+			printf("	   (21ì— ê°€ê¹Œìš´ ìª½ì´ ìŠ¹ë¦¬, 21ì´ˆê³¼ëŠ” íŒ¨ë°°)\n");
+			printf("	7. ìŠ¹ë¦¬ì‹œ ë°°íŒ…ê¸ˆì•¡ì˜ 2ë°°, ë¬´ìŠ¹ë¶€ì‹œ ë°°íŒ…ê¸ˆì•¡ì˜ 1ë°°ë¥¼ ë°›ê³ , íŒ¨ë°°ì‹œ ë°°íŒ…ê¸ˆì•¡ì„ ìƒìŠµë‹ˆë‹¤.\n");
+			printf("	8. 1ì˜ ìƒí™©ì—ì„œ, ì¹´ë“œ ìˆ«ìì˜ í•©ì´ 21ì´ ë˜ë©´(BLACK JACK) ë°°íŒ… ê¸ˆì•¡ì˜ 2.5ë°°ë¥¼ ë°›ìŠµë‹ˆë‹¤.\n");
+			printf("	   ë‹¨, ë”œëŸ¬ì—­ì‹œ 21ì¼ì‹œ, ë¬´ìŠ¹ë¶€ê°€ ë©ë‹ˆë‹¤.\n");
 			break;
 		case(2):
 			clear(50);
-			printf("					 ¹ÙÄ«¶ó\n\n\n");
-			printf("	µô·¯¿Í ÇÃ·¹ÀÌ¾î°¡ °æÀïÇÕ´Ï´Ù.\n");
-			printf("	1. µô·¯ÀÇ ½Â¸®, 2. ÇÃ·¹ÀÌ¾îÀÇ ½Â¸®, 3. ¹«½ÂºÎ(TIE), 4.¾çÃø Ã¹ Ä«µå ¼ıÀÚÇÕÀÇ µ¿ÀÏ(PAIR)\n");
-			printf("	4°¡Áö °æ¿ìÁß ÇÏ³ª¿¡ º£ÆÃÇÒ ¼ö ÀÖ½À´Ï´Ù.\n");
-			printf("	Ä«µå ¼ıÀÚÇÕÀÇ 1ÀÇÀÚ¸®°¡ Å«ÂÊÀÌ ½Â¸®ÇÕ´Ï´Ù.\n");
-			printf("	10, J, Q, K´Â 0À¸·Î °è»êÇÕ´Ï´Ù.\n");
+			printf("					 ë°”ì¹´ë¼\n\n\n");
+			printf("	ë”œëŸ¬ì™€ í”Œë ˆì´ì–´ê°€ ê²½ìŸí•©ë‹ˆë‹¤.\n");
+			printf("	1. ë”œëŸ¬ì˜ ìŠ¹ë¦¬, 2. í”Œë ˆì´ì–´ì˜ ìŠ¹ë¦¬, 3. ë¬´ìŠ¹ë¶€(TIE), 4.ì–‘ì¸¡ ì²« ì¹´ë“œ ìˆ«ìí•©ì˜ ë™ì¼(PAIR)\n");
+			printf("	4ê°€ì§€ ê²½ìš°ì¤‘ í•˜ë‚˜ì— ë² íŒ…í•  ìˆ˜ ìˆìŠµë‹ˆë‹¤.\n");
+			printf("	ì¹´ë“œ ìˆ«ìí•©ì˜ 1ì˜ìë¦¬ê°€ í°ìª½ì´ ìŠ¹ë¦¬í•©ë‹ˆë‹¤.\n");
+			printf("	10, J, Q, KëŠ” 0ìœ¼ë¡œ ê³„ì‚°í•©ë‹ˆë‹¤.\n");
 
 			printf("\n\n");
-			printf("					°ÔÀÓ ÁøÇà\n\n");
-			printf("	0. µô·¯, ÇÃ·¹ÀÌ¾î, TIE(¹«½ÂºÎ), PAIR(Ã¹Ä«µå ¹«½ÂºÎ)Áß,\n");
-			printf("	   ÇÏ³ª¸¦ ¼±ÅÃÇÏ¿© ¹èÆÃÇÕ´Ï´Ù.\n");
-			printf("	1. °¢°¢ 2ÀåÀÇ Ä«µå¸¦ ³ª´²¹Ş½À´Ï´Ù.\n");
-			printf("	2. ¾çÃø Ä«µåÀÇ ÇÕÀÌ °°Àºµ¥, PAIR¿¡ º£ÆÃÇÑ°æ¿ì,\n");
-			printf("	   ½Â¸®ÇÏ¿© ¹è´ç±İÀ» ¹Ş½À´Ï´Ù. (3~6Àº ÁøÇàÇÏÁö ¾Ê½À´Ï´Ù.)\n");
-			printf("	3. µô·¯, ÇÃ·¹ÀÌ¾îÁß ¾î´À ÇÑÂÊÀÌ¶óµµ ¼ıÀÚ°¡ 8,9¶ó¸é(Netural),\n");
-			printf("	   Ä«µå¸¦ Ãß°¡·Î ¹ŞÁö ¾Ê°í, ½ÂºÎ¸¦ ÁøÇàÇÕ´Ï´Ù. (3~5´Â ÁøÇàÇÏÁö ¾Ê½À´Ï´Ù.)\n");
-			printf("	4. NeturalÀÌ ¾Æ´Ñ°æ¿ì, ¿ì¼± ÇÃ·¹ÀÌ¾î ¸ÕÀú, ¹ŞÀº Ä«µåÀÇ ¼ıÀÚÇÕ¿¡ µû¶ó,\n");
-			printf("	   Ä«µå¸¦ ´õ ¹Ş°Å³ª, ¹ŞÁö ¾Ê½À´Ï´Ù.\n");
-			printf("	5. µô·¯´Â µô·¯ÀÇ ¼ö¿Í ÇÃ·¹ÀÌ¾î°¡ Ãß°¡·Î ¹ŞÀº Ä«µåÀÇ ¼ö¿Í ¼ıÀÚÇÕ¿¡ µû¶ó,\n");
-			printf("	   Ä«µå¸¦ ´õ ¹Ş°Å³ª, ¹ŞÁö¾Ê½À´Ï´Ù.\n");
-			printf("	6. ÇÃ·¹ÀÌ¾î¿Í µô·¯ÀÇ Ä«µå Ãß°¡°¡ ³¡³ª¸é, ½ÂºÎ¸¦ ÁøÇàÇÕ´Ï´Ù.\n");
-			printf("	   ¼ıÀÚÇÕÀÇ 1ÀÇ ÀÚ¸®°¡ Å« ÂÊÀÌ ½Â¸®ÇÕ´Ï´Ù.\n");
-			printf("	7. ½ÂºÎ¸¦ ¸ÂÃá °æ¿ì 1¹è, TIE¸¦ ¸ÂÃá°æ¿ì 8¹è,\n");
-			printf("	   PAIR¸¦ ¸ÂÃá°æ¿ì 11¹èÀÇ ¹è´çÀ» ¹Ş½À´Ï´Ù.\n");
+			printf("					ê²Œì„ ì§„í–‰\n\n");
+			printf("	0. ë”œëŸ¬, í”Œë ˆì´ì–´, TIE(ë¬´ìŠ¹ë¶€), PAIR(ì²«ì¹´ë“œ ë¬´ìŠ¹ë¶€)ì¤‘,\n");
+			printf("	   í•˜ë‚˜ë¥¼ ì„ íƒí•˜ì—¬ ë°°íŒ…í•©ë‹ˆë‹¤.\n");
+			printf("	1. ê°ê° 2ì¥ì˜ ì¹´ë“œë¥¼ ë‚˜ëˆ ë°›ìŠµë‹ˆë‹¤.\n");
+			printf("	2. ì–‘ì¸¡ ì¹´ë“œì˜ í•©ì´ ê°™ì€ë°, PAIRì— ë² íŒ…í•œê²½ìš°,\n");
+			printf("	   ìŠ¹ë¦¬í•˜ì—¬ ë°°ë‹¹ê¸ˆì„ ë°›ìŠµë‹ˆë‹¤. (3~6ì€ ì§„í–‰í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤.)\n");
+			printf("	3. ë”œëŸ¬, í”Œë ˆì´ì–´ì¤‘ ì–´ëŠ í•œìª½ì´ë¼ë„ ìˆ«ìê°€ 8,9ë¼ë©´(Netural),\n");
+			printf("	   ì¹´ë“œë¥¼ ì¶”ê°€ë¡œ ë°›ì§€ ì•Šê³ , ìŠ¹ë¶€ë¥¼ ì§„í–‰í•©ë‹ˆë‹¤. (3~5ëŠ” ì§„í–‰í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤.)\n");
+			printf("	4. Neturalì´ ì•„ë‹Œê²½ìš°, ìš°ì„  í”Œë ˆì´ì–´ ë¨¼ì €, ë°›ì€ ì¹´ë“œì˜ ìˆ«ìí•©ì— ë”°ë¼,\n");
+			printf("	   ì¹´ë“œë¥¼ ë” ë°›ê±°ë‚˜, ë°›ì§€ ì•ŠìŠµë‹ˆë‹¤.\n");
+			printf("	5. ë”œëŸ¬ëŠ” ë”œëŸ¬ì˜ ìˆ˜ì™€ í”Œë ˆì´ì–´ê°€ ì¶”ê°€ë¡œ ë°›ì€ ì¹´ë“œì˜ ìˆ˜ì™€ ìˆ«ìí•©ì— ë”°ë¼,\n");
+			printf("	   ì¹´ë“œë¥¼ ë” ë°›ê±°ë‚˜, ë°›ì§€ì•ŠìŠµë‹ˆë‹¤.\n");
+			printf("	6. í”Œë ˆì´ì–´ì™€ ë”œëŸ¬ì˜ ì¹´ë“œ ì¶”ê°€ê°€ ëë‚˜ë©´, ìŠ¹ë¶€ë¥¼ ì§„í–‰í•©ë‹ˆë‹¤.\n");
+			printf("	   ìˆ«ìí•©ì˜ 1ì˜ ìë¦¬ê°€ í° ìª½ì´ ìŠ¹ë¦¬í•©ë‹ˆë‹¤.\n");
+			printf("	7. ìŠ¹ë¶€ë¥¼ ë§ì¶˜ ê²½ìš° 1ë°°, TIEë¥¼ ë§ì¶˜ê²½ìš° 8ë°°,\n");
+			printf("	   PAIRë¥¼ ë§ì¶˜ê²½ìš° 11ë°°ì˜ ë°°ë‹¹ì„ ë°›ìŠµë‹ˆë‹¤.\n");
 			break;
 		case(3):
 			clear(50);
-			printf("¾²¸®Ä«µå Æ÷Ä¿\n");
-			printf("¹Ì±¸Çö\n");
+			printf("ì“°ë¦¬ì¹´ë“œ í¬ì»¤\n");
+			printf("ë¯¸êµ¬í˜„\n");
 			break;
 
 		case(4):
 			clear(50);
-			printf("					 °æ  ¸¶\n\n\n");
-			printf("	º£ÆÃÇÑ ¸»ÀÌ ¿ì½ÂÇÏ¸é ½Â¸®ÇÕ´Ï´Ù.\n");
-			printf("	°¢ ¸»Àº ¸Å 0.1ÃÊ ¸¶´Ù 0~9ÀÇ °Å¸®¸¦ ·£´ıÀ¸·Î ÀÌµ¿ÇÕ´Ï´Ù. \n");
-			printf("	°¡Àå ¸ÕÀú GOAL¿¡ µµ´ŞÇÏ´Â ¸»ÀÌ ¿ì½ÂÇÏ¸ç, °øµ¿ ¿ì½ÂÀÌ Á¸ÀçÇÕ´Ï´Ù.\n");
-			printf("	º£ÆÃÇÑ ¸»ÀÌ °øµ¿ ¿ì½ÂÇÑ °æ¿ì, ÀûÁßÀ¸·Î °£ÁÖÇÕ´Ï´Ù.\n");
+			printf("					 ê²½  ë§ˆ\n\n\n");
+			printf("	ë² íŒ…í•œ ë§ì´ ìš°ìŠ¹í•˜ë©´ ìŠ¹ë¦¬í•©ë‹ˆë‹¤.\n");
+			printf("	ê° ë§ì€ ë§¤ 0.1ì´ˆ ë§ˆë‹¤ 0~9ì˜ ê±°ë¦¬ë¥¼ ëœë¤ìœ¼ë¡œ ì´ë™í•©ë‹ˆë‹¤. \n");
+			printf("	ê°€ì¥ ë¨¼ì € GOALì— ë„ë‹¬í•˜ëŠ” ë§ì´ ìš°ìŠ¹í•˜ë©°, ê³µë™ ìš°ìŠ¹ì´ ì¡´ì¬í•©ë‹ˆë‹¤.\n");
+			printf("	ë² íŒ…í•œ ë§ì´ ê³µë™ ìš°ìŠ¹í•œ ê²½ìš°, ì ì¤‘ìœ¼ë¡œ ê°„ì£¼í•©ë‹ˆë‹¤.\n");
 
 			printf("\n\n");
-			printf("					°ÔÀÓ ÁøÇà\n\n");
-			printf("	0. 1~4¹ø ¸¶ Áß, 1¸¶¸®ÀÇ ¸»À» ¼±ÅÃÇÕ´Ï´Ù.\n");
-			printf("	1. º£ÆÃÀ» ÇÏ¸é, °æ¸¶¸¦ ÁøÇàÇÕ´Ï´Ù.\n");
-			printf("	2. ÀûÁß½Ã º£ÆÃ±İ¾×ÀÇ 2¹è¸¦ ¾òÀ¸¸ç,ºñÀûÁß½Ã º£ÆÃ±İ¾×À» ÀÒ½À´Ï´Ù. \n");
+			printf("					ê²Œì„ ì§„í–‰\n\n");
+			printf("	0. 1~4ë²ˆ ë§ˆ ì¤‘, 1ë§ˆë¦¬ì˜ ë§ì„ ì„ íƒí•©ë‹ˆë‹¤.\n");
+			printf("	1. ë² íŒ…ì„ í•˜ë©´, ê²½ë§ˆë¥¼ ì§„í–‰í•©ë‹ˆë‹¤.\n");
+			printf("	2. ì ì¤‘ì‹œ ë² íŒ…ê¸ˆì•¡ì˜ 2ë°°ë¥¼ ì–»ìœ¼ë©°,ë¹„ì ì¤‘ì‹œ ë² íŒ…ê¸ˆì•¡ì„ ìƒìŠµë‹ˆë‹¤. \n");
 			break;
 		}
 
 		int a;
 		printf("\n");
-		printf("´Ù¸¥ °ÔÀÓ ¼³¸í µè±â : 1                 °ÔÀÓ ¼±ÅÃÇÏ±â : 2      \n");
+		printf("ë‹¤ë¥¸ ê²Œì„ ì„¤ëª… ë“£ê¸° : 1                 ê²Œì„ ì„ íƒí•˜ê¸° : 2      \n");
 		scanf("%d", &a);
 		getchar();
 		while (1) {
@@ -1819,8 +1819,8 @@ void print_rule() {
 				return;
 			}
 			else {
-				printf("1°ú 2Áß¿¡¼­¸¸ °ñ¶óÁÖ¼¼¿ä\n");
-				printf("´Ù¸¥ °ÔÀÓ ¼³¸í µè±â : 1                 °ÔÀÓ ¼±ÅÃÇÏ±â : 2      \n");
+				printf("1ê³¼ 2ì¤‘ì—ì„œë§Œ ê³¨ë¼ì£¼ì„¸ìš”\n");
+				printf("ë‹¤ë¥¸ ê²Œì„ ì„¤ëª… ë“£ê¸° : 1                 ê²Œì„ ì„ íƒí•˜ê¸° : 2      \n");
 				scanf("%d", &a);
 				getchar();
 			}
@@ -1849,7 +1849,7 @@ void print_main() {
 		clear(11);
 
 		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 15);
-		printf("                                   ¾Æ¹«Å°³ª ÀÔ·ÂÇÏ¸é ½ÃÀÛÇÕ´Ï´Ù.");
+		printf("                                   ì•„ë¬´í‚¤ë‚˜ ì…ë ¥í•˜ë©´ ì‹œì‘í•©ë‹ˆë‹¤.");
 		clear(5);
 		if (kbhit()) {
 			getch();
